@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sum & Principal</title>
+</head>
+<body>
+    <h2> Sum </h2>
+    <input oninput="sum()" placeholder="Enter number 1" type="number" id="a">
+    <input oninput="sum()" placeholder="Enter number 2" type="number" id="b">
+    <button onclick="sum()">Find Sum</button>
+    <h3 id="sum"></h3>
+
+    <br>
+    <h2> Principal </h2>
+    <input oninput="principal()" type="number" placeholder="Enter Principal" id="principal">
+    <input oninput="principal()" type="number" placeholder="Enter Rate of Intrest" id="rate">
+    <input oninput="principal()" type="number" placeholder="Enter Time" id="time">
+    <button onclick="principal()">Find Amount</button>
+    <h3 id="amount"></h3>
+
+    <script>
+
+        function sum(){
+            var num1 = document.getElementById("a").value;
+            var num2 = document.getElementById("b").value;
+            fetch("http:localhost:3000/sum?num1="+num1+"&num2="+num2)
+            .then(function(data){
+                data.json()
+                .then(function(data){
+                    document.getElementById("sum").innerHTML = data.msg;
+                })
+            })
+        }
+
+        function principal(){
+            var principal = document.getElementById("principal").value;
+            var time = document.getElementById("time").value;
+            var rate = document.getElementById("rate").value;
+
+            fetch("http:localhost:3000/principal?principal="+principal+"&rate="+rate+"&time="+time)
+            .then(function(data){
+                data.json()
+                .then(function(response){
+                    document.getElementById("amount").innerHTML = response.msg;
+                    
+                })
+            })
+        }
+
+        
+    </script>
+</body>
+</html>
