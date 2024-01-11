@@ -1,2 +1,5 @@
 node_modules/
 *.mp4
+./Class Notes/5/5.2/Todo-App/.git/
+./Class Notes/5/5.2/Todo-App/.gitignore
+*.zip
